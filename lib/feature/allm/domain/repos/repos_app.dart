@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:newsappnew/Models/article_model.dart';
-import 'package:newsappnew/utils/errors/failure.dart';
+import 'package:newsappnew/core/errors/failure.dart';
+import 'package:newsappnew/feature/allm/models/article_model.dart';
 
 abstract class RepoApp {
   Future<Either<Failure, List<ArticleModel>>> fetchNewsApp();

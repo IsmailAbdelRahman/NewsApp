@@ -1,8 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:newsappnew/core/widget/web_view_screen.dart';
 
 Widget coustemCategre(
     {required String title,
@@ -62,12 +61,12 @@ Widget coustemCategre(
   );
 }
 
-void navigationTo(context, Widget) =>
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Widget));
+void navigationTo(context, widget) =>
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
 
-Widget articlBuilder(list, {bool IsSearch = false}) {
+Widget articlBuilder(list, {bool isSearch = false}) {
   return /*state is LoadingDataNewsState */ list.length < 1
-      ? IsSearch
+      ? isSearch
           ? Container()
           : Center(child: Lottie.asset('assets/lottie/112463-loader.json'))
       : ListView.builder(
@@ -75,7 +74,7 @@ Widget articlBuilder(list, {bool IsSearch = false}) {
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, _) => InkWell(
               onTap: () {
-                navigationTo(context, WebView(list[_]['url']));
+                navigationTo(context, WebViewScren(list[_]['url']));
               },
               child: coustemCategre(
                   context: context,

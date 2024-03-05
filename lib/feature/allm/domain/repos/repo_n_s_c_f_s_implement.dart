@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:newsappnew/Models/article_model.dart';
-import 'package:newsappnew/domain/repos/repos_app.dart';
-import 'package:newsappnew/services/Networt/remote/dio_helper.dart';
-import 'package:newsappnew/utils/app_constant.dart';
-import 'package:newsappnew/utils/errors/failure.dart';
+import 'package:dio/dio.dart';
+import 'package:newsappnew/core/errors/failure.dart';
+import 'package:newsappnew/core/utils/app_constant.dart';
+import 'package:newsappnew/feature/allm/domain/repos/repos_app.dart';
+import 'package:newsappnew/feature/allm/models/article_model.dart';
+import 'package:newsappnew/core/utils/dio_helper.dart';
 
 class RepoNSCFSImplement extends RepoApp {
   RepoNSCFSImplement(this.servicesDio);
@@ -28,11 +29,13 @@ class RepoNSCFSImplement extends RepoApp {
             urlToImage: article["urlToImage"]));
       }
 
-      print(listAr[1].url);
+      //  print(listAr[1].url);
       return right(listAr);
     } catch (e) {
-      print("errorrrrrrrrrrrrCategory");
-      return left(ErrorBullDio());
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -50,8 +53,10 @@ class RepoNSCFSImplement extends RepoApp {
 
       return right(finalData);
     } catch (e) {
-      print(" errorrrrrrrrrrrrNews");
-      return left(ErrorBullDio());
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 

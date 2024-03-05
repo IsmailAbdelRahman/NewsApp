@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsappnew/Cubites/Cubit_NewsApp/CubitNewsApp.dart';
-import 'package:newsappnew/Cubites/Cubit_NewsApp/StateNews.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/cubit_news_app.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/state_news.dart';
 
 class TestOne extends StatelessWidget {
   const TestOne({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:newsappnew/feature/home/presetation/views/widget/body_newsapp.dart';
+import 'package:newsappnew/feature/business/presetation/views/widget/body_business.dart';
 
-class HomeViewNewsApp extends StatelessWidget {
-  const HomeViewNewsApp({super.key});
+class BussinusView extends StatelessWidget {
+  const BussinusView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const BodyNewsApp();
+    return const BodyBussines();
   }
 }

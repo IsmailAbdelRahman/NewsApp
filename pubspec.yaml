@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.0 <4.0.0'
+  sdk: '>=3.2.3 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -29,7 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: ^8.0.3
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
   dartz: ^0.10.1
   dio: ^4.0.6
   flutter:
@@ -64,8 +64,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/lottie/
-  # assets:
-  #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -76,12 +74,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  ###########################
   # fonts:
-  #  - family: Style0
-  #     fonts:
-  # fonts:
-  ##############################
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

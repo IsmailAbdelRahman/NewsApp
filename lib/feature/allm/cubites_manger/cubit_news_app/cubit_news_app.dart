@@ -1,14 +1,12 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:newsappnew/core/utils/app_constant.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/state_news.dart';
+import 'package:newsappnew/core/utils/dio_helper.dart';
 import 'package:newsappnew/feature/business/presetation/views/business_view.dart';
 import 'package:newsappnew/feature/home/presetation/views/home_view_news_app.dart';
+import 'package:newsappnew/feature/setting/S_Setting.dart';
 import 'package:newsappnew/feature/sports/presetation/views/sports_view.dart';
-import 'package:newsappnew/utils/app_constant.dart';
-import 'package:newsappnew/views/S_Setting.dart';
-import 'package:newsappnew/Cubites/Cubit_NewsApp/StateNews.dart';
-import 'package:flutter/material.dart';
-
-import '../../services/Networt/remote/dio_helper.dart';
 
 class CubitNewsApp extends Cubit<SuperNewsAppState> {
   CubitNewsApp() : super(InitialStateNewsApp());
@@ -18,9 +16,9 @@ class CubitNewsApp extends Cubit<SuperNewsAppState> {
 ////////////////////
 
   List<Widget> sCreens = [
-    const SportsView(),
+    const SportView(),
     const HomeViewNewsApp(),
-    const BusinessView(),
+    const BussinusView(),
     const SettingView(),
   ];
 

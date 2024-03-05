@@ -1,15 +1,13 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsappnew/Cubites/Cubit_Changetheme/CubitChangeTheme.dart';
-import 'package:newsappnew/Cubites/Cubit_Changetheme/StateChangeTheme.dart';
-import 'package:newsappnew/services/Networt/remote/dio_helper.dart';
-import 'package:newsappnew/services/Shared_Preferences/C_Shared_Preferences.dart';
-import 'package:newsappnew/utils/app_themes.dart';
-import 'bottom_app.dart';
-import 'Cubites/Cubit_NewsApp/CubitNewsApp.dart';
-import 'Cubites/Observer.dart';
+import 'package:newsappnew/core/utils/app_themes.dart';
+import 'package:newsappnew/core/widget/bottom_app.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_change_theme/cubit_change_theme.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_change_theme/state_change_theme.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/cubit_news_app.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/observer.dart';
+import 'package:newsappnew/core/utils/dio_helper.dart';
+import 'package:newsappnew/core/utils/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,8 +15,8 @@ void main() async {
 
   DioHelper.initi();
 
-  await Sh_Preferences.INitial_Sh_preferen();
-  bool? dark = Sh_Preferences.getData(key: 'dark');
+  await SPreferences.iNitialSPreferen();
+  bool? dark = SPreferences.getData(key: 'dark');
   runApp(TheNewsApp(dark: dark));
 }
 
@@ -33,7 +31,7 @@ class TheNewsApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) =>
-                CubitThemes()..ChaneColorsThmes(darKSaveMain: dark)),
+                CubitThemes()..chaneColorsThmes(darKSaveMain: dark)),
         BlocProvider(create: (context) => CubitNewsApp()..getDataSports()),
       ],
       child: BlocConsumer<CubitThemes, SuperChangeThemeState>(
@@ -45,7 +43,7 @@ class TheNewsApp extends StatelessWidget {
           darkTheme: AppThemes.themeDataDark,
 
           //////////////////////////
-          themeMode: CubitThemes.getCubitThemes(context).Dark
+          themeMode: CubitThemes.getCubitThemes(context).darkth
               ? ThemeMode.dark
               : ThemeMode.light,
 

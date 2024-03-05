@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsappnew/Cubites/Cubit_Changetheme/CubitChangeTheme.dart';
-import 'package:newsappnew/Components/Component.dart';
+import 'package:newsappnew/core/widget/Component.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_change_theme/cubit_change_theme.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/cubit_news_app.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/state_news.dart';
 import 'package:newsappnew/feature/search/presetation/views/search_view.dart';
-import 'Cubites/Cubit_NewsApp/CubitNewsApp.dart';
-import 'Cubites/Cubit_NewsApp/StateNews.dart';
 
 class BottomApp extends StatelessWidget {
   const BottomApp({Key? key}) : super(key: key);
@@ -30,13 +30,13 @@ class BottomApp extends StatelessWidget {
                     )),
                 IconButton(
                     onPressed: () {
-                      CubitThemes.getCubitThemes(context).ChaneColorsThmes();
+                      CubitThemes.getCubitThemes(context).chaneColorsThmes();
                     },
                     icon: Icon(
-                      CubitThemes.getCubitThemes(context).Dark
+                      CubitThemes.getCubitThemes(context).darkth
                           ? Icons.light_mode
                           : Icons.dark_mode,
-                      color: CubitThemes.getCubitThemes(context).Dark
+                      color: CubitThemes.getCubitThemes(context).darkth
                           ? Colors.white
                           : Colors.black,
                     ))
