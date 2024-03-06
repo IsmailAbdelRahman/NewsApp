@@ -1,5 +1,3 @@
-import 'package:newsappnew/feature/allm/models/article_model.dart';
-
 abstract class SuperNewsAppState {}
 
 class InitialStateNewsApp extends SuperNewsAppState {}
@@ -33,12 +31,7 @@ class GetDataSportsState extends SuperNewsAppState {}
 
 class ErrorDataSportsState extends SuperNewsAppState {}
 
-/// get Search
-class LoadingDataSearchState extends SuperNewsAppState {}
 
-class GetDataSearchState extends SuperNewsAppState {}
-
-class ErrorDataSearchState extends SuperNewsAppState {}
 
 //////////////////////////////
 

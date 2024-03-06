@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:newsappnew/core/utils/app_route.dart';
 import 'package:newsappnew/core/widget/Component.dart';
 import 'package:newsappnew/core/widget/card_dr.dart';
 import 'package:newsappnew/core/widget/custom_widget_error.dart';
+import 'package:newsappnew/feature/allm/cubites_manger/cubit_change_theme/cubit_change_theme.dart';
 import 'package:newsappnew/feature/science/presetation/manger/cubit/science_cubit.dart';
 
 class BodyScience extends StatelessWidget {
@@ -37,7 +40,41 @@ class BodyScience extends StatelessWidget {
 
                 slivers: [
                   SliverToBoxAdapter(
-                    child: CardDer(stateArticle: state.dataSin),
+                    child: Stack(
+                      children: [
+                        CardDer(stateArticle: state.dataSin),
+                        SizedBox(
+                          height: 100,
+                          width: 200,
+                          child: Row(children: [
+                            IconButton(
+                                onPressed: () {
+                                  GoRouter.of(context)
+                                      .push(AppRoute.searchView);
+                                  // navigationTo(context, SearchView());
+                                },
+                                icon: const Icon(
+                                  Icons.search,
+                                  color: Colors.black,
+                                )),
+                            IconButton(
+                                onPressed: () {
+                                  CubitThemes.getCubitThemes(context)
+                                      .chaneColorsThmes();
+                                },
+                                icon: Icon(
+                                  CubitThemes.getCubitThemes(context).darkth
+                                      ? Icons.light_mode
+                                      : Icons.dark_mode,
+                                  color:
+                                      CubitThemes.getCubitThemes(context).darkth
+                                          ? Colors.white
+                                          : Colors.black,
+                                ))
+                          ]),
+                        ),
+                      ],
+                    ),
                   ),
                   SliverFillRemaining(
                     child: articlBuilderObject(state.dataSin),

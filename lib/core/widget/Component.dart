@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:newsappnew/core/utils/app_assets.dart';
 import 'package:newsappnew/core/widget/web_view_screen.dart';
 import 'package:newsappnew/feature/allm/models/article_model.dart';
 
@@ -28,8 +29,9 @@ Widget coustemCategre(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                    image: NetworkImage(
-                        urlNetImage == 'null' ? photo : urlNetImage.toString()),
+                    image: NetworkImage(urlNetImage == 'null'
+                        ? AppAssets.imageNull
+                        : urlNetImage.toString()),
                     fit: BoxFit.cover)),
           ),
           Expanded(

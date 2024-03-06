@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsappnew/core/widget/Component.dart';
-import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/cubit_news_app.dart';
-import 'package:newsappnew/feature/allm/cubites_manger/cubit_news_app/state_news.dart';
+import 'package:newsappnew/feature/search/presetation/manger/cubit_search/cubit_search_cubit.dart';
 
-class SearchView extends StatelessWidget {
-  SearchView({Key? key}) : super(key: key);
+class BodySearchView extends StatelessWidget {
+  BodySearchView({Key? key}) : super(key: key);
 
   var controller = TextEditingController();
   GlobalKey<FormState> formState = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CubitNewsApp, SuperNewsAppState>(
+    return BlocConsumer<CubitSearchCubit, CubitSearchState>(
       listener: (context, state) {},
       builder: (context, state) => Scaffold(
         body: Column(
@@ -44,7 +43,8 @@ class SearchView extends StatelessWidget {
                   ///////////////
                   onChanged: (value) {
                     if (formState.currentState!.validate()) {
-                      CubitNewsApp.get(context).getDataSearch(value);
+                      BlocProvider.of<CubitSearchCubit>(context)
+                          .getDataSearch(value);
                     }
                   },
                 ),
@@ -53,7 +53,8 @@ class SearchView extends StatelessWidget {
 
             ///textFormField
             Expanded(
-                child: articlBuilder(CubitNewsApp.get(context).listDataSearch,
+                child: articlBuilder(
+                    BlocProvider.of<CubitSearchCubit>(context).listDataSearch,
                     isSearch: true))
           ],
         ),
