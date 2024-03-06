@@ -13,24 +13,18 @@ class RepoNSCFSImplement extends RepoApp {
   final String url = AppConstant.url2andKay;
 
   @override
-  Future<Either<Failure, List<ArticleModel>>> fetchCategory() async {
+  Future<Either<Failure, List<ArticleModel>>> fetchscience() async {
     try {
       Map<String, dynamic> response =
           await servicesDio.ger(point: url, queryParameter: {
         'country': 'us',
-        'category': 'business',
+        'category': 'science',
       });
 
-      List<ArticleModel> listAr = [];
-      for (var article in response['articles']) {
-        listAr.add(ArticleModel(
-            title: article["title"],
-            url: article["url"],
-            urlToImage: article["urlToImage"]));
-      }
+      List<dynamic> listN = response['articles'];
+      var finalData = getDataNewsExapleTo(lilst: listN); // تم الاختصار
 
-      //  print(listAr[1].url);
-      return right(listAr);
+      return right(finalData);
     } catch (e) {
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
@@ -40,7 +34,7 @@ class RepoNSCFSImplement extends RepoApp {
   }
 
   @override
-  Future<Either<Failure, List<ArticleModel>>> fetchNewsApp() async {
+  Future<Either<Failure, List<ArticleModel>>> fetchBussin() async {
     try {
       Map<String, dynamic> response =
           await servicesDio.ger(point: url, queryParameter: {
@@ -61,46 +55,66 @@ class RepoNSCFSImplement extends RepoApp {
   }
 
   @override
-  Future<Either<Failure, List<ArticleModel>>> fetchSports() {
-    throw UnimplementedError();
-  }
+  Future<Either<Failure, List<ArticleModel>>> fetchSports() async {
+    try {
+      Map<String, dynamic> response =
+          await servicesDio.ger(point: url, queryParameter: {
+        'country': 'eg',
+        'category': 'sports',
+      });
 
-  @override
-  Future<Either<Failure, List<ArticleModel>>> fetchSearch() {
-    throw UnimplementedError();
-  }
+      List<dynamic> listN = response['articles'];
+      var finalData = getDataNewsExapleTo(lilst: listN); // تم الاختصار
 
-  @override
-  Future<Either<Failure, List<ArticleModel>>> fetchTec() {
-    throw UnimplementedError();
-  }
-
-  @override
-
-  /// then
-  void funTestThen() {
-    // thar
-    List<ArticleModel> listAr = [];
-
-    servicesDio.ger(point: url, queryParameter: {
-      'country': 'eg',
-      'category': 'business',
-    }).then((value) {
-      for (var article in value['articles']) {
-        listAr.add(ArticleModel(
-            title: article["title"],
-            url: article["url"],
-            urlToImage: article["urlToImage"]));
+      return right(finalData);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
       }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 
-      // return listAr;
-      for (var element in listAr) {
-        print(element.title);
+  @override
+  Future<Either<Failure, List<ArticleModel>>> fetchSearch() async {
+    try {
+      Map<String, dynamic> response =
+          await servicesDio.ger(point: url, queryParameter: {
+        'country': 'eg',
+        'category': 's',
+      });
+
+      List<dynamic> listN = response['articles'];
+      var finalData = getDataNewsExapleTo(lilst: listN); // تم الاختصار
+
+      return right(finalData);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
       }
-    }).catchError((e) {
-      print("errorrrrrrrrrrrrThen");
-      // return ErrorBullDio();
-    });
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ArticleModel>>> fetchTec() async {
+    try {
+      Map<String, dynamic> response =
+          await servicesDio.ger(point: url, queryParameter: {
+        'country': 'eg',
+        'category': 'technology',
+      });
+
+      List<dynamic> listN = response['articles'];
+      var finalData = getDataNewsExapleTo(lilst: listN); // تم الاختصار
+
+      return right(finalData);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
   }
 
   @override
@@ -116,18 +130,47 @@ class RepoNSCFSImplement extends RepoApp {
     return listAr;
   }
 
+/////////////////////////////////////////////
   @override
   void funTestabdull() {
-    List<dynamic> listDataBusiness = [];
+    // List<dynamic> listDataBusiness = [];
 
-    servicesDio.ger(point: url, queryParameter: {
-      'country': 'eg',
-      'category': 'business',
-    }).then((value) {
-      listDataBusiness = value['articles'];
-      print(value);
-    }).catchError((e) {
-      print(e);
-    });
+    // servicesDio.ger(point: url, queryParameter: {
+    //   'country': 'eg',
+    //   'category': 'business',
+    // }).then((value) {
+    //   listDataBusiness = value['articles'];
+    //   print(value);
+    // }).catchError((e) {
+    //   print(e);
+    // });
+  }
+
+  @override
+
+  /// then
+  void funTestThen() {
+    // // thar
+    // List<ArticleModel> listAr = [];
+
+    // servicesDio.ger(point: url, queryParameter: {
+    //   'country': 'eg',
+    //   'category': 'business',
+    // }).then((value) {
+    //   for (var article in value['articles']) {
+    //     listAr.add(ArticleModel(
+    //         title: article["title"],
+    //         url: article["url"],
+    //         urlToImage: article["urlToImage"]));
+    //   }
+
+    //   // return listAr;
+    //   for (var element in listAr) {
+    //     print(element.title);
+    //   }
+    // }).catchError((e) {
+    //   print("errorrrrrrrrrrrrThen");
+    //   // return ErrorBullDio();
+    // });
   }
 }
