@@ -24,7 +24,9 @@ class AppThemes {
         unselectedItemColor: Colors.grey),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(),
     scaffoldBackgroundColor: const Color(0xff464646),
+
     //cardTheme: const CardTheme(color: Color(0xff464646), elevation: 10),
+
     iconTheme: const IconThemeData(color: Colors.white),
     //  colorScheme: const ColorScheme(background: Color(0xff464646)),
   );

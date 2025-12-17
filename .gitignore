@@ -41,6 +41,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+<<<<<<< HEAD
 
 # FVM Version Cache
 .fvm/
+=======
+>>>>>>> 6540c7616322ef0d77cfabb5aaddab73d4391241
