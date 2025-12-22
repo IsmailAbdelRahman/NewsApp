@@ -11,7 +11,7 @@ class BodySport extends StatelessWidget {
     return BlocConsumer<SportsCubit, SportsState>(
         listener: (context, state) {},
         builder: (context, state) {
-          if (state is SecssfullySports) {
+          if (state is SuccessfullySports) {
             return articlBuilderObject(state.dataSports);
           } else if (state is ErrorSports) {
             return Center(child: Text(state.err.toString()));

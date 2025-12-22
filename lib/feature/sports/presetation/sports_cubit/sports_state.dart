@@ -11,7 +11,7 @@ class ErrorSports extends SportsState {
   ErrorSports(this.err);
 }
 
-class SecssfullySports extends SportsState {
+class SuccessfullySports extends SportsState {
   final List<ArticleModel> dataSports;
-  SecssfullySports(this.dataSports);
+  SuccessfullySports(this.dataSports);
 }

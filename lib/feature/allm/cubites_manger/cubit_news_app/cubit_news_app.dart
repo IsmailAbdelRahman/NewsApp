@@ -14,7 +14,7 @@ class CubitNewsApp extends Cubit<SuperNewsAppState> {
 
 ////////////////////
 
-  List<Widget> sCreens = [
+  List<Widget> listScreenHomeBody = [
     const SportView(),
     const ScienceView(),
     const BussinusView(),

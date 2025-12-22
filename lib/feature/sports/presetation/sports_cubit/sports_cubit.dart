@@ -13,6 +13,6 @@ class SportsCubit extends Cubit<SportsState> {
     emit(LodingSports());
     var result = await repo.fetchSports();
     result.fold((l) => emit(ErrorSports(l.errMessage)),
-        (r) => emit(SecssfullySports(r)));
+        (r) => emit(SuccessfullySports(r)));
   }
 }

@@ -60,7 +60,7 @@ class BodyScience extends StatelessWidget {
                             IconButton(
                                 onPressed: () {
                                   CubitThemes.getCubitThemes(context)
-                                      .chaneColorsThmes();
+                                      .changeColorThemes();
                                 },
                                 icon: Icon(
                                   CubitThemes.getCubitThemes(context).darkth

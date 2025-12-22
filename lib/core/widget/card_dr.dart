@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsappnew/core/utils/app_constant.dart';
 import 'package:newsappnew/core/widget/Component.dart';
 import 'package:newsappnew/core/widget/custom_teg.dart';
 import 'package:newsappnew/feature/allm/models/article_model.dart';
@@ -15,8 +16,8 @@ class CardDer extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.40,
           width: double.infinity,
           padding: const EdgeInsets.all(20.0),
-          imageUrl: stateArticle[1].urlToImage ??
-              "https://1.bp.blogspot.com/-9dYWPTjYY2E/X3kPjNje9RI/AAAAAAAAqGY/OnusUWLRgGwv_Z_P3Wm--oYLxy19GrGVACNcBGAsYHQ/s1000/black-wallpapers-images-3.jpg",
+          imageUrl:
+              stateArticle[1].urlToImage ?? AppConstant.nullImageUrlChange,
           gradientBlur: true,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,

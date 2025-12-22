@@ -8,8 +8,8 @@ class CubitThemes extends Cubit<SuperChangeThemeState> {
 
   static CubitThemes getCubitThemes(context) => BlocProvider.of(context);
 
-  bool darkth = true;
-  void chaneColorsThmes({bool? darKSaveMain}) {
+  bool darkth = true; // triger
+  void changeColorThemes({bool? darKSaveMain}) {
     if (darKSaveMain != null) {
       darkth = darKSaveMain;
       emit(ChangeThemesState());

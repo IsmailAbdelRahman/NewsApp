@@ -29,12 +29,14 @@ void main() async {
   setupServiceLocatorGetit();
 
   await SPreferences.initialSPreferences();
+
   bool? dark = SPreferences.getData(key: 'dark');
+
   runApp(TheNewsApp(dark: dark));
 }
 
 class TheNewsApp extends StatelessWidget {
-  final bool? dark;
+  final bool? dark; // attribute of class
 
   const TheNewsApp({super.key, required this.dark}); // constructor
 
@@ -44,15 +46,12 @@ class TheNewsApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) =>
-                CubitThemes()..chaneColorsThmes(darKSaveMain: dark)),
+                CubitThemes()..changeColorThemes(darKSaveMain: dark)),
         BlocProvider(
             create: (context) => CubitNewsApp(getit.get<RepoNSCFSImplement>())),
         BlocProvider(
             create: (context) =>
                 SportsCubit(getit.get<RepoNSCFSImplement>())..fetchSports()),
-        BlocProvider(
-            create: (context) =>
-                ScienceCubit(getit.get<RepoNSCFSImplement>())..fetchcin()),
         BlocProvider(
             create: (context) =>
                 ScienceCubit(getit.get<RepoNSCFSImplement>())..fetchcin()),
