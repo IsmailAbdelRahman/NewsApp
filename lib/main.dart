@@ -28,7 +28,7 @@ void main() async {
   DioHelper.initi();
   setupServiceLocatorGetit();
 
-  await SPreferences.iNitialSPreferen();
+  await SPreferences.initialSPreferences();
   bool? dark = SPreferences.getData(key: 'dark');
   runApp(TheNewsApp(dark: dark));
 }

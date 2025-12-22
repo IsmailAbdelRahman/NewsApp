@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 //api   application programming interface
-
+// dio one test
 class DioHelper {
   static Dio? dio;
   static String url1 = 'https://newsapi.org/';
@@ -18,11 +18,12 @@ class DioHelper {
   }
 }
 
+// dio two test
 class ServicesDio {
   final Dio _dio;
   ServicesDio(this._dio);
 
-  Future<Map<String, dynamic>> ger(
+  Future<Map<String, dynamic>> get(
       {required String point,
       required Map<String, dynamic> queryParameter}) async {
     var respons = await _dio.get('https://newsapi.org/$point',
@@ -31,8 +32,10 @@ class ServicesDio {
     return respons.data;
   }
 }
+// dio  three test
 
-class Diod {
+/*
+class Dio3 {
   static Dio? dio;
 
   static dioin() {
@@ -47,3 +50,6 @@ class Diod {
     print(response);
   }
 }
+
+
+*/

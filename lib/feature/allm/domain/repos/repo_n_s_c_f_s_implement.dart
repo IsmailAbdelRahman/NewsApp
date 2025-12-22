@@ -16,7 +16,7 @@ class RepoNSCFSImplement extends RepoApp {
   Future<Either<Failure, List<ArticleModel>>> fetchscience() async {
     try {
       Map<String, dynamic> response =
-          await servicesDio.ger(point: url, queryParameter: {
+          await servicesDio.get(point: url, queryParameter: {
         'country': 'us',
         'category': 'science',
       });
@@ -37,7 +37,7 @@ class RepoNSCFSImplement extends RepoApp {
   Future<Either<Failure, List<ArticleModel>>> fetchBussin() async {
     try {
       Map<String, dynamic> response =
-          await servicesDio.ger(point: url, queryParameter: {
+          await servicesDio.get(point: url, queryParameter: {
         'country': 'eg',
         'category': 'business',
       });
@@ -58,7 +58,7 @@ class RepoNSCFSImplement extends RepoApp {
   Future<Either<Failure, List<ArticleModel>>> fetchSports() async {
     try {
       Map<String, dynamic> response =
-          await servicesDio.ger(point: url, queryParameter: {
+          await servicesDio.get(point: url, queryParameter: {
         'country': 'eg',
         'category': 'sports',
       });
@@ -79,7 +79,7 @@ class RepoNSCFSImplement extends RepoApp {
   Future<Either<Failure, List<ArticleModel>>> fetchSearch() async {
     try {
       Map<String, dynamic> response =
-          await servicesDio.ger(point: url, queryParameter: {
+          await servicesDio.get(point: url, queryParameter: {
         'country': 'eg',
         'category': 's',
       });
@@ -100,7 +100,7 @@ class RepoNSCFSImplement extends RepoApp {
   Future<Either<Failure, List<ArticleModel>>> fetchTec() async {
     try {
       Map<String, dynamic> response =
-          await servicesDio.ger(point: url, queryParameter: {
+          await servicesDio.get(point: url, queryParameter: {
         'country': 'eg',
         'category': 'technology',
       });
