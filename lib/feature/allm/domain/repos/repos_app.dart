@@ -8,7 +8,6 @@ abstract class RepoApp {
   Future<Either<Failure, List<ArticleModel>>> fetchscience();
   Future<Either<Failure, List<ArticleModel>>> fetchTec();
   Future<Either<Failure, List<ArticleModel>>> fetchSearch();
-
   List<ArticleModel> getDataNewsExapleTo({required List<dynamic> lilst});
   void funTestThen();
   void funTestabdull();

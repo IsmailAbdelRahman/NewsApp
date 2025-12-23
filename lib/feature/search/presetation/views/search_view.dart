@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsappnew/core/widget/Component.dart';
+import 'package:newsappnew/core/widget/component.dart';
 import 'package:newsappnew/feature/search/presetation/manger/cubit_search/cubit_search_cubit.dart';
 
 class BodySearchView extends StatelessWidget {

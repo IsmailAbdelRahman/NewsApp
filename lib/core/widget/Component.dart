@@ -44,7 +44,7 @@ Widget coustemCategre(
                   Expanded(
                       flex: 8,
                       child: Text(
-                        title ?? 'Null',
+                        title.isEmpty ? 'null' : title,
                         style: Theme.of(context).textTheme.bodyLarge,
                         maxLines: 4,
                         overflow: TextOverflow.ellipsis,

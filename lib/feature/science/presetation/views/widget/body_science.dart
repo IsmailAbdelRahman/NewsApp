@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:newsappnew/core/utils/app_route.dart';
-import 'package:newsappnew/core/widget/Component.dart';
+import 'package:newsappnew/core/widget/component.dart';
 import 'package:newsappnew/core/widget/card_dr.dart';
 import 'package:newsappnew/core/widget/custom_widget_error.dart';
 import 'package:newsappnew/feature/allm/cubites_manger/cubit_change_theme/cubit_change_theme.dart';

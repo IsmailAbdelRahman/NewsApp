@@ -10,8 +10,8 @@ class LoadingDataNewsState extends SuperNewsAppState {}
 class GetDataNewsState extends SuperNewsAppState {}
 
 class ErrorDataNewsState extends SuperNewsAppState {
-  dynamic Error;
-  ErrorDataNewsState(this.Error);
+  dynamic error;
+  ErrorDataNewsState(this.error);
 }
 
 /// Success
@@ -30,7 +30,7 @@ class LoadingDataSportsState extends SuperNewsAppState {}
 class GetDataSportsState extends SuperNewsAppState {}
 
 class ErrorDataSportsState extends SuperNewsAppState {}
-
+// mod 
 
 
 //////////////////////////////

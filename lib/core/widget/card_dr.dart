@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsappnew/core/utils/app_constant.dart';
-import 'package:newsappnew/core/widget/Component.dart';
+import 'package:newsappnew/core/widget/component.dart';
 import 'package:newsappnew/core/widget/custom_teg.dart';
 import 'package:newsappnew/feature/allm/models/article_model.dart';
 

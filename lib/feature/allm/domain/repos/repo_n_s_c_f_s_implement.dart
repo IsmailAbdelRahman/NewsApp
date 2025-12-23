@@ -38,7 +38,7 @@ class RepoNSCFSImplement extends RepoApp {
     try {
       Map<String, dynamic> response =
           await servicesDio.get(point: url, queryParameter: {
-        'country': 'eg',
+        'country': 'us',
         'category': 'business',
       });
 
@@ -59,7 +59,7 @@ class RepoNSCFSImplement extends RepoApp {
     try {
       Map<String, dynamic> response =
           await servicesDio.get(point: url, queryParameter: {
-        'country': 'eg',
+        'country': 'us',
         'category': 'sports',
       });
 

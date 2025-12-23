@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsappnew/core/widget/Component.dart';
+import 'package:newsappnew/core/widget/component.dart';
 import 'package:newsappnew/feature/sports/presetation/sports_cubit/sports_cubit.dart';
 
 class BodySport extends StatelessWidget {
