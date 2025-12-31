@@ -66,7 +66,6 @@ class TheNewsApp extends StatelessWidget {
           ////////////////////////
           theme: AppThemes.themeDataLight,
           ///////////////////////////
-
           darkTheme: AppThemes.themeDataDark,
 
           //////////////////////////

@@ -33,7 +33,7 @@ class BodyScience extends StatelessWidget {
               //   ),
               // ),
               // extendBodyBehindAppBar: true,
-              drawer: const Drawer(),
+              //  drawer: const Drawer(),
               body: CustomScrollView(
                 //  physics: const NeverScrollableScrollPhysics(),
                 physics: const BouncingScrollPhysics(),
