@@ -4,17 +4,21 @@ import 'package:newsappnew/core/utils/app_assets.dart';
 import 'package:newsappnew/core/widget/web_view_screen.dart';
 import 'package:newsappnew/feature/allm/models/article_model.dart';
 
-Widget coustemCategre(
-    {required String title,
-    required String urlNetImage,
-    required String data,
-    context}) {
+Widget coustemCategre({
+  required String title,
+  required String urlNetImage,
+  required String data,
+  context,
+}) {
   return Padding(
     padding: const EdgeInsets.all(2),
     child: Card(
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20), bottomLeft: Radius.circular(50))),
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(20),
+          bottomLeft: Radius.circular(50),
+        ),
+      ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       elevation: 15,
       child: Row(
@@ -24,12 +28,16 @@ Widget coustemCategre(
             width: 170,
             height: 150,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                    image: NetworkImage(urlNetImage == 'null'
-                        ? AppAssets.imageNull
-                        : urlNetImage.toString()),
-                    fit: BoxFit.cover)),
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: NetworkImage(
+                  urlNetImage == 'null'
+                      ? AppAssets.imageNull
+                      : urlNetImage.toString(),
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           Expanded(
             child: Container(
@@ -42,19 +50,20 @@ Widget coustemCategre(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Expanded(
-                      flex: 8,
-                      child: Text(
-                        title.isEmpty ? 'null' : title,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                      )),
-                  Expanded(flex: 1, child: Text(data))
+                    flex: 8,
+                    child: Text(
+                      title.isEmpty ? 'null' : title,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(flex: 1, child: Text(data)),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     ),
@@ -67,42 +76,48 @@ void navigationTo(context, widget) =>
 Widget articlBuilder(list, {bool isSearch = false}) {
   return /*state is LoadingDataNewsState */ list.length < 1
       ? isSearch
-          ? Container()
-          : Center(child: Lottie.asset('assets/lottie/112463-loader.json'))
+            ? Container()
+            : Center(child: Lottie.asset('assets/lottie/112463-loader.json'))
       : ListView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, _) => InkWell(
-              onTap: () {
-                navigationTo(context, WebViewScren(list[_]['url']));
-              },
-              child: coustemCategre(
-                  context: context,
-                  title: list[_]['title'],
-                  urlNetImage: list[_]['urlToImage'].toString(),
-                  data: list[_]['publishedAt'].toString())),
-          itemCount: list.length);
+          itemBuilder: (context, i) => InkWell(
+            onTap: () {
+              navigationTo(context, WebViewScren(list[i]['url']));
+            },
+            child: coustemCategre(
+              context: context,
+              title: list[i]['title'],
+              urlNetImage: list[i]['urlToImage'].toString(),
+              data: list[i]['publishedAt'].toString(),
+            ),
+          ),
+          itemCount: list.length,
+        );
 }
 
 Widget articlBuilderObject(List<ArticleModel> list, {bool isSearch = false}) {
   return /*state is LoadingDataNewsState */ list.isEmpty
       ? isSearch
-          ? Container()
-          : Center(child: Lottie.asset('assets/lottie/112463-loader.json'))
+            ? Container()
+            : Center(child: Lottie.asset('assets/lottie/112463-loader.json'))
       : ListView.builder(
           // shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           // physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, _) => InkWell(
-              onTap: () {
-                navigationTo(context, WebViewScren(list[_].url!));
-              },
-              child: coustemCategre(
-                  context: context,
-                  title: list[_].title!,
-                  urlNetImage: list[_].urlToImage.toString(),
-                  data: list[_].title.toString())),
-          itemCount: list.length);
+          itemBuilder: (context, i) => InkWell(
+            onTap: () {
+              navigationTo(context, WebViewScren(list[i].url!));
+            },
+            child: coustemCategre(
+              context: context,
+              title: list[i].title!,
+              urlNetImage: list[i].urlToImage.toString(),
+              data: list[i].title.toString(),
+            ),
+          ),
+          itemCount: list.length,
+        );
 }
 
 /////////////////
@@ -112,7 +127,7 @@ Widget articlBuilderObject(List<ArticleModel> list, {bool isSearch = false}) {
 
 class ImageContainer extends StatelessWidget {
   const ImageContainer({
-    Key? key,
+    super.key,
     this.height = 125,
     this.borderRadius = 20,
     required this.width,
@@ -122,7 +137,7 @@ class ImageContainer extends StatelessWidget {
     this.child,
     this.gradientBlur = false,
     this.wholeBlur = false,
-  }) : super(key: key);
+  });
 
   final double width;
   final double height;
@@ -141,18 +156,17 @@ class ImageContainer extends StatelessWidget {
       width: width,
       margin: margin,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: imageUrl.isEmpty
-              ? const DecorationImage(
-                  image: NetworkImage(
-                      "https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg"),
-                  fit: BoxFit.cover,
-                )
-              : DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
+        borderRadius: BorderRadius.circular(20),
+        image: imageUrl.isEmpty
+            ? const DecorationImage(
+                image: NetworkImage(
+                  "https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg",
                 ),
-          color: Colors.white),
+                fit: BoxFit.cover,
+              )
+            : DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover),
+        color: Colors.white,
+      ),
       child: Container(
         padding: padding,
         decoration: BoxDecoration(
@@ -162,10 +176,12 @@ class ImageContainer extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black
-                        .withOpacity(0.0), // Top color with zero opacity
-                    Colors.black
-                        .withOpacity(0.5), // Bottom color with 0.5 opacity
+                    Colors.black.withOpacity(
+                      0.0,
+                    ), // Top color with zero opacity
+                    Colors.black.withOpacity(
+                      0.5,
+                    ), // Bottom color with 0.5 opacity
                   ],
                 )
               : null,
