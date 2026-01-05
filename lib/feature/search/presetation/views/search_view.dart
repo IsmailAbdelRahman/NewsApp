@@ -4,7 +4,7 @@ import 'package:newsappnew/core/widget/component.dart';
 import 'package:newsappnew/feature/search/presetation/manger/cubit_search/cubit_search_cubit.dart';
 
 class BodySearchView extends StatelessWidget {
-  BodySearchView({Key? key}) : super(key: key);
+  BodySearchView({super.key});
 
   var controller = TextEditingController();
   GlobalKey<FormState> formState = GlobalKey<FormState>();
@@ -24,13 +24,15 @@ class BodySearchView extends StatelessWidget {
                 child: TextFormField(
                   decoration: const InputDecoration(
                     enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                     hintText: 'Search',
                     prefixIcon: Icon(Icons.search),
                   ),
                   controller: controller,
-                  maxLines: 1, keyboardType: TextInputType.name,
+                  maxLines: 1,
+                  keyboardType: TextInputType.name,
                   validator: (String? value) {
                     if (value!.isEmpty) {
                       //  print('value null');
@@ -43,8 +45,9 @@ class BodySearchView extends StatelessWidget {
                   ///////////////
                   onChanged: (value) {
                     if (formState.currentState!.validate()) {
-                      BlocProvider.of<CubitSearchCubit>(context)
-                          .getDataSearch(value);
+                      BlocProvider.of<CubitSearchCubit>(
+                        context,
+                      ).getDataSearch(value);
                     }
                   },
                 ),
@@ -53,9 +56,11 @@ class BodySearchView extends StatelessWidget {
 
             ///textFormField
             Expanded(
-                child: articlBuilder(
-                    BlocProvider.of<CubitSearchCubit>(context).listDataSearch,
-                    isSearch: true))
+              child: articlBuilder(
+                BlocProvider.of<CubitSearchCubit>(context).listDataSearch,
+                isSearch: true,
+              ),
+            ),
           ],
         ),
       ),

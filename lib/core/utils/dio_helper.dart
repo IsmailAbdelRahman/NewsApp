@@ -5,15 +5,19 @@ import 'package:dio/dio.dart';
 class DioHelper {
   static Dio? dio;
   static String url1 = 'https://newsapi.org/';
-  static initi() {
-    dio = Dio(BaseOptions(
+  static void initi() {
+    dio = Dio(
+      BaseOptions(
         baseUrl: url1,
-        receiveDataWhenStatusError: true /* , receiveTimeout: 500*/));
+        receiveDataWhenStatusError: true /* , receiveTimeout: 500*/,
+      ),
+    );
   }
 
-  static Future<Response> get(
-      {required String url,
-      required Map<String, dynamic> queryParameter}) async {
+  static Future<Response> get({
+    required String url,
+    required Map<String, dynamic> queryParameter,
+  }) async {
     return await dio!.get(url, queryParameters: queryParameter);
   }
 }
@@ -25,11 +29,14 @@ class ServicesDio {
   final Dio _dio;
   ServicesDio(this._dio);
 
-  Future<Map<String, dynamic>> get(
-      {required String point,
-      required Map<String, dynamic> queryParameter}) async {
-    var respons = await _dio.get('https://newsapi.org/$point',
-        queryParameters: queryParameter);
+  Future<Map<String, dynamic>> get({
+    required String point,
+    required Map<String, dynamic> queryParameter,
+  }) async {
+    var respons = await _dio.get(
+      'https://newsapi.org/$point',
+      queryParameters: queryParameter,
+    );
 
     return respons.data;
   }

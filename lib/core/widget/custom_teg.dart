@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomTag extends StatelessWidget {
   const CustomTag({
-    Key? key,
+    super.key,
     required this.backgroundColor,
     required this.children,
-  }) : super(key: key);
+  });
 
   final Color backgroundColor;
   final List<Widget> children;
@@ -18,10 +18,7 @@ class CustomTag extends StatelessWidget {
         color: backgroundColor,
         borderRadius: BorderRadius.circular(20.0),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: children,
-      ),
+      child: Row(mainAxisSize: MainAxisSize.min, children: children),
     );
   }
 }
