@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:newsappnew/core/utils/app_route.dart';
+import 'package:newsappnew/core/widget/carouse_view.dart';
 import 'package:newsappnew/core/widget/component.dart';
 import 'package:newsappnew/core/widget/card_dr.dart';
 import 'package:newsappnew/core/widget/custom_widget_error.dart';
@@ -14,10 +15,11 @@ class BodyScience extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ScienceCubit, ScienceState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          if (state is SecssfullySin) {
-            return Scaffold(
+      listener: (context, state) {},
+      builder: (context, state) {
+        if (state is SecssfullySin) {
+          return SafeArea(
+            child: Scaffold(
               // appBar: AppBar(
               //   systemOverlayStyle: SystemUiOverlayStyle.light,
               //   backgroundColor: Colors.transparent,
@@ -42,25 +44,36 @@ class BodyScience extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: Stack(
                       children: [
-                        CardDer(stateArticle: state.dataSin),
+                        // CardDer(stateArticle: state.dataSin),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.39,
+                          width: double.infinity,
+
+                          child: CarouselExample(stateArticle: state.dataSin),
+                        ),
+
                         SizedBox(
                           height: 100,
                           width: 200,
-                          child: Row(children: [
-                            IconButton(
+                          child: Row(
+                            children: [
+                              IconButton(
                                 onPressed: () {
-                                  GoRouter.of(context)
-                                      .push(AppRoute.searchView);
+                                  GoRouter.of(
+                                    context,
+                                  ).push(AppRoute.searchView);
                                   // navigationTo(context, SearchView());
                                 },
                                 icon: const Icon(
                                   Icons.search,
                                   color: Colors.black,
-                                )),
-                            IconButton(
+                                ),
+                              ),
+                              IconButton(
                                 onPressed: () {
-                                  CubitThemes.getCubitThemes(context)
-                                      .changeColorThemes();
+                                  CubitThemes.getCubitThemes(
+                                    context,
+                                  ).changeColorThemes();
                                 },
                                 icon: Icon(
                                   CubitThemes.getCubitThemes(context).darkth
@@ -68,25 +81,29 @@ class BodyScience extends StatelessWidget {
                                       : Icons.dark_mode,
                                   color:
                                       CubitThemes.getCubitThemes(context).darkth
-                                          ? Colors.white
-                                          : Colors.black,
-                                ))
-                          ]),
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
                   SliverFillRemaining(
                     child: articlBuilderObject(state.dataSin),
-                  )
+                  ),
                 ],
               ),
-            );
-          } else if (state is ErrorSin) {
-            return Center(child: Text(state.err.toString()));
-          }
+            ),
+          );
+        } else if (state is ErrorSin) {
+          return Center(child: Text(state.err.toString()));
+        }
 
-          return const CustomWidgetError();
-        });
+        return const CustomWidgetError();
+      },
+    );
   }
 }
