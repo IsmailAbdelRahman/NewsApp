@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:newsappnew/core/utils/app_route.dart';
 import 'package:newsappnew/core/widget/carouse_view.dart';
 import 'package:newsappnew/core/widget/component.dart';
-import 'package:newsappnew/core/widget/card_dr.dart';
 import 'package:newsappnew/core/widget/custom_widget_error.dart';
 import 'package:newsappnew/feature/allm/cubites_manger/cubit_change_theme/cubit_change_theme.dart';
 import 'package:newsappnew/feature/science/presetation/manger/cubit/science_cubit.dart';

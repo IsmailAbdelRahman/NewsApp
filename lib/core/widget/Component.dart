@@ -83,7 +83,7 @@ Widget articlBuilder(list, {bool isSearch = false}) {
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, i) => InkWell(
             onTap: () {
-              navigationTo(context, WebViewScren(list[i]['url']));
+              navigationTo(context, WebViewScreen(url: list[i]['url']));
             },
             child: coustemCategre(
               context: context,
@@ -107,7 +107,7 @@ Widget articlBuilderObject(List<ArticleModel> list, {bool isSearch = false}) {
           // physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, i) => InkWell(
             onTap: () {
-              navigationTo(context, WebViewScren(list[i].url!));
+              navigationTo(context, WebViewScreen(url: list[i].url!));
             },
             child: coustemCategre(
               context: context,

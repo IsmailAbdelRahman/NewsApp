@@ -41,32 +41,59 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class WebViewScren extends StatefulWidget {
-  final String urlWebViewScreen;
-  const WebViewScren(this.urlWebViewScreen, {super.key});
+class WebViewScreen extends StatefulWidget {
+  final String url;
+  const WebViewScreen({super.key, required this.url});
 
   @override
-  State<WebViewScren> createState() => _WebViewScrenState();
+  State<WebViewScreen> createState() => _WebViewScreenState();
 }
 
-class _WebViewScrenState extends State<WebViewScren> {
+class _WebViewScreenState extends State<WebViewScreen> {
+  late final WebViewController _controller;
+  bool _isLoading = true;
+
   @override
   void initState() {
     super.initState();
-    _openUrl();
+
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..loadRequest(Uri.parse(widget.url))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageFinished: (_) {
+            setState(() {
+              _isLoading = false;
+            });
+          },
+        ),
+      );
   }
 
-  Future<void> _openUrl() async {
-    final uri = Uri.parse(widget.urlWebViewScreen);
-    await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
+  Future<bool> _onWillPop() async {
+    // لو الصفحة تقدر ترجع للصفحة السابقة داخل WebView
+    if (await _controller.canGoBack()) {
+      _controller.goBack();
+      return false; // متروحش لصفحة سابقة في التطبيق
+    }
+    return true; // ترجع للخلف عادي
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(), // Loading بسيط
+    return WillPopScope(
+      onWillPop: _onWillPop, // التحكم في زر الرجوع
+      child: Scaffold(
+        appBar: AppBar(title: const Text('News Details')),
+        body: Stack(
+          children: [
+            WebViewWidget(controller: _controller),
+            if (_isLoading) const Center(child: CircularProgressIndicator()),
+          ],
+        ),
       ),
     );
   }
